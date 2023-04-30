@@ -17,3 +17,8 @@ struct TodoItem: Codable {
     let name: String
     let deviceInfo: String
 }
+
+struct TodoItemPost: Codable {
+    let name: String
+    let deviceInfo: String
+}

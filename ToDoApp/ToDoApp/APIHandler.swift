@@ -26,6 +26,22 @@ class APIHandler {
             }
         }
     }
+    
+    func postTodoItem(todoItem: TodoItemPost, completion: @escaping (Result<Data?, Error>) -> Void) {
+        let url = "http://localhost:5105/api/Todos/add_todo"
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        
+        AF.request(url, method: .post, parameters: todoItem, encoder: JSONParameterEncoder.default, headers: headers).responseData { response in
+            switch response.result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+
 }
 
 

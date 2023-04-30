@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     var tblListConstraint: NSLayoutConstraint?
     var uivMainConstraint: NSLayoutConstraint?
     var todoItem: [TodoItem] = []
-    
+    var popUp: PopUp!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,19 +35,60 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         tblListConstraint = tblList.constraints.first { $0.firstAttribute == .height }
-        uivMainConstraint = uivMain.constraints.first { $0.firstAttribute == .height }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //tblListConstraint?.constant = 500.0
-        if todoItem.count * Int(CGFloat(50.0)) > Int(uivMainConstraint?.constant ?? 0 - 300) {
-            tblListConstraint?.constant = 500.0
-        } else {
-            tblListConstraint?.constant = CGFloat(todoItem.count) * 50.0
-        }
+        uivMainConstraint = uivMain.constraints.first { $0.firstAttribute == .height }
+        
     }
+    
+    @IBAction func btnAdd(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Create Task", message: nil, preferredStyle: .alert)
+        alert.addTextField{ textfielfs in
+            textfielfs.placeholder = "Enter your task"
+            textfielfs.returnKeyType = .next
+            textfielfs.keyboardType = .default
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
+        alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {action in
+            print("continue tapped")
+            if let text = alert.textFields?.first?.text {
+                let newTodo = TodoItemPost(name: text, deviceInfo: APIHandler.sharedInstance.uuid)
+                APIHandler.sharedInstance.postTodoItem(todoItem: newTodo) { result in
+                    switch result {
+                    case .success(let data):
+                        print("Data successfully posted \(data)")
+                        self.fetchData()
+                    case .failure(let error):
+                        print("Error posting data: \(error.localizedDescription)")
+                    }
+                }
+            }
+        }))
+        present(alert, animated: true)
+        
+        //        let popupVC = BtnAddPopUp(nibName: "BtnAddPopUp", bundle: nil)
+        //        popupVC.modalPresentationStyle = .overFullScreen
+        //        popupVC.onDismiss = {
+        //            self.fetchData()
+        //        }
+        //        present(popupVC, animated: true, completion: nil)
+        
+        
+        //        self.popUp = PopUp(frame: self.view.frame)
+        //        popUp.btnCreate.addTarget(self, action: #selector(createButtonPressed), for: .touchUpInside)
+        //        self.view.addSubview(popUp)
+    }
+    
+    //    @objc func createButtonPressed(){
+    //        print("button tapped")
+    //        self.popUp.removeFromSuperview()
+    //    }
+    //
     func fetchData() {
         APIHandler.sharedInstance.getData { (result: Result<Response, Error>) in
             switch result {
@@ -55,6 +96,13 @@ class ViewController: UIViewController {
                 print(data.data)
                 self.todoItem = data.data
                 self.tblList.reloadData()
+                
+                
+                if self.todoItem.count * Int(CGFloat(44.0)) > Int(self.uivMainConstraint!.constant - 300) {
+                    self.tblListConstraint?.constant = 500.0
+                } else {
+                    self.tblListConstraint?.constant = CGFloat(self.todoItem.count) * 44.0
+                }
                 
             case .failure(let error):
                 print(error.localizedDescription)
@@ -77,7 +125,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
+
 }
 
 

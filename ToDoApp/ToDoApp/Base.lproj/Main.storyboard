@@ -24,6 +24,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="btnAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gl0-lK-XL6"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="V29-oT-qTv">
                                 <rect key="frame" x="0.0" y="155" width="393" height="200"/>
@@ -39,14 +42,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upe-gs-WbQ">
-                                                    <rect key="frame" x="36" y="11" width="337" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upe-gs-WbQ">
+                                                    <rect key="frame" x="36" y="10.999999999999998" width="341" height="21.333333333333329"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="6Bx-mv-VrN"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Upe-gs-WbQ" secondAttribute="trailing" constant="16" id="5JQ-0g-w2l"/>
                                                 <constraint firstItem="Upe-gs-WbQ" firstAttribute="leading" secondItem="NQx-IH-wCl" secondAttribute="leadingMargin" constant="16" id="AaG-2u-xV4"/>
                                                 <constraint firstItem="Upe-gs-WbQ" firstAttribute="centerY" secondItem="NQx-IH-wCl" secondAttribute="centerY" id="dg3-JD-XE2"/>
                                                 <constraint firstItem="Upe-gs-WbQ" firstAttribute="top" secondItem="NQx-IH-wCl" secondAttribute="topMargin" id="oln-ql-vS2"/>
