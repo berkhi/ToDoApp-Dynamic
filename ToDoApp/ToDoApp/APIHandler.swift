@@ -40,8 +40,19 @@ class APIHandler {
             }
         }
     }
-
-
+    
+    func deleteTodoList(todoListId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
+        let parameters: [String: Any] = ["todoListId": todoListId]
+        AF.request("http://localhost:5105/api/Todos/delete_todolist?todoListId=\(todoListId)", method: .delete, parameters: parameters).response { response in
+            switch response.result {
+            case .success(_):
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
 }
 
 

@@ -125,7 +125,26 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let currentItem = todoItem[indexPath.row]
+            APIHandler.sharedInstance.deleteTodoList(todoListId: currentItem.id) { result in
+                print(currentItem.id)
+                switch result {
+                case .success(_):
+                    self.todoItem.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                case .failure(let error):
+                    print("Error deleting data: \(error.localizedDescription)")
+                }
+            }
 
+        }
+    }
 }
 
 
