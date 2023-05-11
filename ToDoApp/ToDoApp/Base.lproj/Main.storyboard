@@ -85,11 +85,87 @@
                         <outlet property="btnAdd" destination="LqF-jd-fDm" id="cpM-SV-HUL"/>
                         <outlet property="tblList" destination="V29-oT-qTv" id="3ci-64-3Y6"/>
                         <outlet property="uivMain" destination="8bC-Xf-vdC" id="W9S-ge-hQI"/>
+                        <segue destination="j1J-wu-4UI" kind="show" identifier="segueVCToDetail" id="dNS-AH-8n1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="962.59541984732823" y="3.5211267605633805"/>
+        </scene>
+        <!--Todo List ItemVC-->
+        <scene sceneID="j7m-3C-If3">
+            <objects>
+                <viewController id="j1J-wu-4UI" customClass="TodoListItemVC" customModule="ToDoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xN0-Hc-WeO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IO4-mX-VDe">
+                                <rect key="frame" x="0.0" y="155" width="393" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="UP8-eu-yqH"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todoListItemCell" id="FIe-Ed-gbA" customClass="tblListItem" customModule="ToDoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FIe-Ed-gbA" id="Drq-jm-vdH">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5n-RX-25J">
+                                                    <rect key="frame" x="31" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="H5n-RX-25J" firstAttribute="leading" secondItem="Drq-jm-vdH" secondAttribute="leadingMargin" constant="11" id="eai-0O-30r"/>
+                                                <constraint firstItem="H5n-RX-25J" firstAttribute="top" secondItem="Drq-jm-vdH" secondAttribute="topMargin" id="i2V-lI-ldc"/>
+                                                <constraint firstItem="H5n-RX-25J" firstAttribute="centerY" secondItem="Drq-jm-vdH" secondAttribute="centerY" id="pd4-aF-g25"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblTodoListItem" destination="H5n-RX-25J" id="A9H-wa-9vj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="j1J-wu-4UI" id="Pmf-UT-Wpv"/>
+                                    <outlet property="delegate" destination="j1J-wu-4UI" id="t5x-Th-KeK"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubp-Tn-VDE">
+                                <rect key="frame" x="282" y="395" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="btnAddItem:" destination="j1J-wu-4UI" eventType="touchUpInside" id="GbQ-fj-LRx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jou-sk-zpW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ubp-Tn-VDE" firstAttribute="leading" secondItem="jou-sk-zpW" secondAttribute="leading" constant="282" id="1GV-CF-mhQ"/>
+                            <constraint firstItem="IO4-mX-VDe" firstAttribute="trailing" secondItem="jou-sk-zpW" secondAttribute="trailing" id="OB7-Uu-Sqj"/>
+                            <constraint firstItem="IO4-mX-VDe" firstAttribute="top" secondItem="jou-sk-zpW" secondAttribute="top" id="UEc-8q-kG4"/>
+                            <constraint firstItem="ubp-Tn-VDE" firstAttribute="top" secondItem="IO4-mX-VDe" secondAttribute="bottom" constant="40" id="YIJ-0o-U3H"/>
+                            <constraint firstItem="IO4-mX-VDe" firstAttribute="leading" secondItem="jou-sk-zpW" secondAttribute="leading" id="yK9-Yj-gaf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6Vp-4R-3u3"/>
+                    <connections>
+                        <outlet property="btnAddItem" destination="ubp-Tn-VDE" id="vdf-v3-koO"/>
+                        <outlet property="tblListItem" destination="IO4-mX-VDe" id="Or1-rN-J16"/>
+                        <outlet property="uivListItem" destination="xN0-Hc-WeO" id="WQN-xU-j5H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7aG-he-JDC" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1765.6488549618321" y="3.5211267605633805"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uGc-Jt-DHv">

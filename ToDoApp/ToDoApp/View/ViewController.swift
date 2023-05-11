@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     var tblListConstraint: NSLayoutConstraint?
     var uivMainConstraint: NSLayoutConstraint?
     var todoItem: [TodoItem] = []
-    var popUp: PopUp!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +44,25 @@ class ViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueVCToDetail" {
+            if let destinationVC = segue.destination as? TodoListItemVC {
+                if let selectedItem = sender as? TodoItem {
+                    destinationVC.todoID = selectedItem.id
+                }
+            }
+        }
+    }
+    
     @IBAction func btnAdd(_ sender: Any) {
         
         let alert = UIAlertController(title: "Create Task", message: nil, preferredStyle: .alert)
-        alert.addTextField{ textfielfs in
-            textfielfs.placeholder = "Enter your task"
-            textfielfs.returnKeyType = .next
-            textfielfs.keyboardType = .default
+        alert.addTextField{ textfields in
+            textfields.placeholder = "Enter your task"
+            textfields.returnKeyType = .next
+            textfields.keyboardType = .default
         }
+    
         alert.addAction(UIAlertAction(title: "Cancel", style: .default))
         alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {action in
             print("continue tapped")
@@ -70,25 +80,8 @@ class ViewController: UIViewController {
             }
         }))
         present(alert, animated: true)
-        
-        //        let popupVC = BtnAddPopUp(nibName: "BtnAddPopUp", bundle: nil)
-        //        popupVC.modalPresentationStyle = .overFullScreen
-        //        popupVC.onDismiss = {
-        //            self.fetchData()
-        //        }
-        //        present(popupVC, animated: true, completion: nil)
-        
-        
-        //        self.popUp = PopUp(frame: self.view.frame)
-        //        popUp.btnCreate.addTarget(self, action: #selector(createButtonPressed), for: .touchUpInside)
-        //        self.view.addSubview(popUp)
     }
-    
-    //    @objc func createButtonPressed(){
-    //        print("button tapped")
-    //        self.popUp.removeFromSuperview()
-    //    }
-    //
+
     func fetchData() {
         APIHandler.sharedInstance.getData { (result: Result<Response, Error>) in
             switch result {
@@ -123,6 +116,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let currentItem = todoItem[indexPath.row]
         cell.lblTodoItem.text = currentItem.name
         return cell
+    }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let selectedItem = todoItem[indexPath.row]
+//        let todoListItemVC = TodoListItemVC()
+//        todoListItemVC.todoID = selectedItem.id
+//        //navigationController?.pushViewController(todoListItemVC, animated: true)
+//
+//        performSegue(withIdentifier: "segueVCToDetail", sender: selectedItem.id)
+//        //present(todoListItem, animated: true, completion: nil)
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedItem = todoItem[indexPath.row]
+        performSegue(withIdentifier: "segueVCToDetail", sender: selectedItem)
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {

@@ -16,8 +16,8 @@
 		C06E9C2129FA8EA5006DCE51 /* tblList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E9C2029FA8EA5006DCE51 /* tblList.swift */; };
 		C06E9C2329FA94E6006DCE51 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E9C2229FA94E6006DCE51 /* APIHandler.swift */; };
 		C06E9C2529FAA75E006DCE51 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E9C2429FAA75E006DCE51 /* Models.swift */; };
-		C06E9C2B29FEACB0006DCE51 /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E9C2A29FEACB0006DCE51 /* PopUp.swift */; };
-		C06E9C2D29FEACBC006DCE51 /* PopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = C06E9C2C29FEACBC006DCE51 /* PopUp.xib */; };
+		C0CFDDDB2A02A0F7008E0FD1 /* TodoListItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CFDDDA2A02A0F7008E0FD1 /* TodoListItemVC.swift */; };
+		C0CFDDDF2A02A44D008E0FD1 /* tblListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CFDDDE2A02A44D008E0FD1 /* tblListItem.swift */; };
 		C96C6B5139BAFEE97C0C41F8 /* Pods_ToDoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19891A5715931A06374F422 /* Pods_ToDoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +36,9 @@
 		C06E9C2029FA8EA5006DCE51 /* tblList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tblList.swift; sourceTree = "<group>"; };
 		C06E9C2229FA94E6006DCE51 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		C06E9C2429FAA75E006DCE51 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		C06E9C2A29FEACB0006DCE51 /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
-		C06E9C2C29FEACBC006DCE51 /* PopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUp.xib; sourceTree = "<group>"; };
+		C0CFDDDA2A02A0F7008E0FD1 /* TodoListItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListItemVC.swift; sourceTree = "<group>"; };
+		C0CFDDDE2A02A44D008E0FD1 /* tblListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tblListItem.swift; sourceTree = "<group>"; };
+		C0FDC68A2A0A8B6B00456206 /* ToDoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,20 +82,46 @@
 		C05C195229F851FF00728820 /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
+				C0FDC68A2A0A8B6B00456206 /* ToDoApp.entitlements */,
 				C05C195329F851FF00728820 /* AppDelegate.swift */,
 				C05C195529F851FF00728820 /* SceneDelegate.swift */,
-				C05C195729F851FF00728820 /* ViewController.swift */,
-				C06E9C2429FAA75E006DCE51 /* Models.swift */,
-				C06E9C2229FA94E6006DCE51 /* APIHandler.swift */,
-				C06E9C2029FA8EA5006DCE51 /* tblList.swift */,
+				C0FDC68B2A0D4FFC00456206 /* View */,
+				C0FDC68E2A0D508400456206 /* Model */,
 				C05C195929F851FF00728820 /* Main.storyboard */,
-				C06E9C2A29FEACB0006DCE51 /* PopUp.swift */,
-				C06E9C2C29FEACBC006DCE51 /* PopUp.xib */,
 				C05C195C29F8520100728820 /* Assets.xcassets */,
 				C05C195E29F8520100728820 /* LaunchScreen.storyboard */,
 				C05C196129F8520100728820 /* Info.plist */,
 			);
 			path = ToDoApp;
+			sourceTree = "<group>";
+		};
+		C0FDC68B2A0D4FFC00456206 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C05C195729F851FF00728820 /* ViewController.swift */,
+				C0CFDDDA2A02A0F7008E0FD1 /* TodoListItemVC.swift */,
+				C06E9C2029FA8EA5006DCE51 /* tblList.swift */,
+				C0CFDDDE2A02A44D008E0FD1 /* tblListItem.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C0FDC68E2A0D508400456206 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C0FDC68F2A0D509B00456206 /* Network */,
+				C06E9C2429FAA75E006DCE51 /* Models.swift */,
+			);
+			name = Model;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		C0FDC68F2A0D509B00456206 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C06E9C2229FA94E6006DCE51 /* APIHandler.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		EC56CFBB22C8E299EF5DFEEF /* Pods */ = {
@@ -168,7 +195,6 @@
 			files = (
 				C05C196029F8520100728820 /* LaunchScreen.storyboard in Resources */,
 				C05C195D29F8520100728820 /* Assets.xcassets in Resources */,
-				C06E9C2D29FEACBC006DCE51 /* PopUp.xib in Resources */,
 				C05C195B29F851FF00728820 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,12 +249,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C05C195829F851FF00728820 /* ViewController.swift in Sources */,
+				C0CFDDDF2A02A44D008E0FD1 /* tblListItem.swift in Sources */,
 				C05C195429F851FF00728820 /* AppDelegate.swift in Sources */,
 				C06E9C2329FA94E6006DCE51 /* APIHandler.swift in Sources */,
-				C06E9C2B29FEACB0006DCE51 /* PopUp.swift in Sources */,
 				C06E9C2529FAA75E006DCE51 /* Models.swift in Sources */,
 				C06E9C2129FA8EA5006DCE51 /* tblList.swift in Sources */,
 				C05C195629F851FF00728820 /* SceneDelegate.swift in Sources */,
+				C0CFDDDB2A02A0F7008E0FD1 /* TodoListItemVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ToDoApp/ToDoApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RK6RS4ZNBT;
@@ -403,6 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ToDoApp/ToDoApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RK6RS4ZNBT;

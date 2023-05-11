@@ -22,3 +22,21 @@ struct TodoItemPost: Codable {
     let name: String
     let deviceInfo: String
 }
+
+struct TodoListItemResponse: Codable {
+    let data: [TodoListItem]
+    let error, errors: String?
+}
+
+struct TodoListItem: Codable{
+    let id: Int
+    let name: String
+    let description: String
+    let todoListId: Int
+}
+
+struct TodoListItemPost: Codable {
+    let name: String
+    let description: String
+    let todoListId: Int
+}
