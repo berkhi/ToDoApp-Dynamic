@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,7 +24,11 @@
                                     <constraint firstAttribute="width" constant="75" id="e9n-vT-fQE"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add" cornerStyle="capsule">
+                                    <backgroundConfiguration key="background">
+                                        <color key="strokeColor" name="AccentColor"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="btnAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gl0-lK-XL6"/>
                                 </connections>
@@ -108,14 +113,14 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todoListItemCell" id="FIe-Ed-gbA" customClass="tblListItem" customModule="ToDoApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="42.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FIe-Ed-gbA" id="Drq-jm-vdH">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="42.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5n-RX-25J">
-                                                    <rect key="frame" x="31" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="31" y="11.000000000000002" width="42" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -138,9 +143,13 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubp-Tn-VDE">
-                                <rect key="frame" x="282" y="395" width="75" height="35"/>
+                                <rect key="frame" x="265" y="398" width="75" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add" cornerStyle="capsule">
+                                    <backgroundConfiguration key="background">
+                                        <color key="strokeColor" name="AccentColor"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="btnAddItem:" destination="j1J-wu-4UI" eventType="touchUpInside" id="GbQ-fj-LRx"/>
                                 </connections>
@@ -149,10 +158,11 @@
                         <viewLayoutGuide key="safeArea" id="jou-sk-zpW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ubp-Tn-VDE" firstAttribute="leading" secondItem="jou-sk-zpW" secondAttribute="leading" constant="282" id="1GV-CF-mhQ"/>
+                            <constraint firstItem="ubp-Tn-VDE" firstAttribute="leading" secondItem="jou-sk-zpW" secondAttribute="leading" constant="265" id="12D-YW-Aay"/>
+                            <constraint firstItem="ubp-Tn-VDE" firstAttribute="top" secondItem="IO4-mX-VDe" secondAttribute="bottom" constant="43" id="32H-SC-xY4"/>
                             <constraint firstItem="IO4-mX-VDe" firstAttribute="trailing" secondItem="jou-sk-zpW" secondAttribute="trailing" id="OB7-Uu-Sqj"/>
                             <constraint firstItem="IO4-mX-VDe" firstAttribute="top" secondItem="jou-sk-zpW" secondAttribute="top" id="UEc-8q-kG4"/>
-                            <constraint firstItem="ubp-Tn-VDE" firstAttribute="top" secondItem="IO4-mX-VDe" secondAttribute="bottom" constant="40" id="YIJ-0o-U3H"/>
+                            <constraint firstItem="jou-sk-zpW" firstAttribute="trailing" secondItem="ubp-Tn-VDE" secondAttribute="trailing" constant="53" id="qFs-3c-ixy"/>
                             <constraint firstItem="IO4-mX-VDe" firstAttribute="leading" secondItem="jou-sk-zpW" secondAttribute="leading" id="yK9-Yj-gaf"/>
                         </constraints>
                     </view>
@@ -190,6 +200,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

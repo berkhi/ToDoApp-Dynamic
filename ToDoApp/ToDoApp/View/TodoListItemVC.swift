@@ -24,7 +24,7 @@ class TodoListItemVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        title = "ToDo List:"
         
         tblListItem.delegate = self
         tblListItem.dataSource = self
@@ -33,20 +33,14 @@ class TodoListItemVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let superview = tblListItem.superview {
-            tblListItemConstraint = superview.constraints.first { $0.firstAttribute == .height }
-        }
-        
-        
+        tblListItemConstraint = tblListItem.constraints.first { $0.firstAttribute == .height }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let superview = uivListItem.superview {
-            uivMainConstraint = superview.constraints.first { $0.firstAttribute == .height }
-        }
-        
+        uivMainConstraint = uivListItem.constraints.first { $0.firstAttribute == .height }
+        fetchData()
         
     }
     
@@ -57,12 +51,10 @@ class TodoListItemVC: UIViewController {
                 self.todoListItem = data.data
                 self.tblListItem.reloadData()
                 
-                if let constraint = self.uivMainConstraint {
-                    if self.todoListItem.count * Int(CGFloat(44.0)) > Int(constraint.constant - 300) {
-                        self.tblListItemConstraint?.constant = 500.0
-                    } else {
-                        self.tblListItemConstraint?.constant = CGFloat(self.todoListItem.count) * 44.0
-                    }
+                if self.todoListItem.count * Int(CGFloat(44.0)) > Int(self.uivMainConstraint!.constant - 300) {
+                    self.tblListItemConstraint?.constant = 575.0
+                } else {
+                    self.tblListItemConstraint?.constant = CGFloat(self.todoListItem.count) * 44.0
                 }
                 
             case .failure(let error):
