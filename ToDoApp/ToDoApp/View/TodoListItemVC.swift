@@ -25,6 +25,7 @@ class TodoListItemVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "ToDo List:"
+        AnimationManager.shared.setupAnimation(in: view)
         
         tblListItem.delegate = self
         tblListItem.dataSource = self
@@ -45,6 +46,7 @@ class TodoListItemVC: UIViewController {
     }
     
     func fetchData() {
+        AnimationManager.shared.startAnimation()
         APIHandler.sharedInstance.getDataListItem(todoListId: todoID) { (result: Result<TodoListItemResponse, Error>) in
             switch result {
             case .success(let data):

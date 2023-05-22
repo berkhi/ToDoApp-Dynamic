@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import Lottie
 
 class ViewController: UIViewController {
     
@@ -23,6 +24,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         title = "ToDo:"
+        AnimationManager.shared.setupAnimation(in: view)
         fetchData()
         
         
@@ -62,7 +64,7 @@ class ViewController: UIViewController {
             textfields.returnKeyType = .next
             textfields.keyboardType = .default
         }
-    
+        
         alert.addAction(UIAlertAction(title: "Cancel", style: .default))
         alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {action in
             print("continue tapped")
@@ -83,6 +85,7 @@ class ViewController: UIViewController {
     }
 
     func fetchData() {
+        AnimationManager.shared.startAnimation()
         APIHandler.sharedInstance.getData { (result: Result<Response, Error>) in
             switch result {
             case .success(let data):
@@ -100,6 +103,8 @@ class ViewController: UIViewController {
             case .failure(let error):
                 print(error.localizedDescription)
             }
+            
+            //self.stopAnimation()
         }
     }
     
@@ -118,15 +123,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let selectedItem = todoItem[indexPath.row]
-//        let todoListItemVC = TodoListItemVC()
-//        todoListItemVC.todoID = selectedItem.id
-//        //navigationController?.pushViewController(todoListItemVC, animated: true)
-//
-//        performSegue(withIdentifier: "segueVCToDetail", sender: selectedItem.id)
-//        //present(todoListItem, animated: true, completion: nil)
-//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedItem = todoItem[indexPath.row]
@@ -150,7 +146,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     print("Error deleting data: \(error.localizedDescription)")
                 }
             }
-
+            
         }
     }
 }

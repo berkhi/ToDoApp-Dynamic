@@ -85,6 +85,7 @@ class APIHandler {
         AF.request("http://localhost:5105/api/Todos/delete_todolist_item?todoListItemId=\(todoListItemId)", method: .delete, parameters: parameters).response { response in
             switch response.result {
             case .success(_):
+                print(response.result)
                 completion(.success(()))
             case .failure(let error):
                 completion(.failure(error))
